@@ -1,0 +1,381 @@
+/* Keep scrolling available without showing browser or menu scrollbars. */
+html,
+body,
+.range-menu {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+.range-menu::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+:root,
+body {
+  background: #edf2ee;
+}
+
+:root {
+  --shadow-soft: 0 3px 12px rgba(31, 62, 45, .09);
+  --shadow-raised: 0 6px 16px rgba(31, 62, 45, .14);
+}
+
+.workspace {
+  box-shadow: 0 8px 26px rgba(31, 62, 45, .07);
+}
+
+.heading-icon {
+  border-radius: 0;
+  background: transparent;
+  color: #2f6d50;
+}
+
+.analyze-button {
+  width: fit-content;
+  min-width: 160px;
+  padding: 0 18px;
+  box-shadow: var(--shadow-soft);
+  transition: background .22s ease, box-shadow .22s ease, transform .22s ease;
+}
+
+.analyze-button:hover:not(:disabled) {
+  box-shadow: var(--shadow-raised);
+}
+
+.form-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.coordinate-row {
+  position: relative;
+  gap: 0;
+  overflow: hidden;
+  border-radius: 9px;
+  background: #fff;
+  box-shadow: var(--shadow-soft);
+}
+
+.coordinate-row::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: 9px;
+  bottom: 9px;
+  left: 50%;
+  width: 1px;
+  background: #e6ece7;
+  pointer-events: none;
+}
+
+.coordinate-row .input-wrap {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.coordinate-row .input-wrap:hover,
+.coordinate-row .input-wrap:focus-within {
+  border: 0;
+  outline: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.select-wrap,
+.range-trigger {
+  box-shadow: 0 2px 8px rgba(31, 62, 45, .055);
+  transition: background .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+
+.select-wrap:hover,
+.range-trigger:hover,
+.range-trigger.is-open {
+  box-shadow: 0 4px 12px rgba(31, 62, 45, .09);
+}
+
+.range-menu {
+  transition: box-shadow .2s ease;
+}
+
+/* Cormorant Garamond is an open-license, vintage-leaning display serif. */
+:root {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  --mono: 'Cormorant Garamond', Georgia, serif;
+  --display: 'Cormorant Garamond', Georgia, serif;
+}
+
+*,
+*::before,
+*::after {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+}
+
+.input-wrap input,
+.range-trigger,
+.range-trigger span,
+.range-option,
+.range-option span {
+  font-family: 'DM Sans', sans-serif !important;
+}
+
+.workspace-label,
+.eyebrow,
+.field-label,
+.input-wrap > span,
+.result-kicker,
+.processing-kicker,
+.map-credit,
+.map-labels,
+.page-footer {
+  letter-spacing: .015em;
+}
+
+.intro h1 {
+  letter-spacing: -1px;
+}
+
+@media (min-width: 761px) and (max-height: 900px) {
+  .range-menu {
+    max-height: 140px;
+  }
+}
+
+@media (max-width: 760px) {
+  .range-menu {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    margin-top: 7px;
+  }
+}
+
+.range-menu-heading {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  margin: 0;
+  padding: 4px 6px 8px;
+  border-bottom: 1px solid #edf1ed;
+  background: #fff;
+  color: #65776a;
+  font: 600 9px 'DM Sans', sans-serif;
+  letter-spacing: .08em;
+}
+
+.range-menu-heading span {
+  padding: 2px 4px;
+  border-radius: 3px;
+  background: #f1f5f1;
+  color: #718174;
+  font-size: 8px;
+  letter-spacing: 0;
+}
+
+@media (min-width: 761px) and (max-height: 800px) {
+  .app-shell {
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
+  }
+
+  .topbar {
+    flex-basis: 56px;
+    height: 56px;
+  }
+
+  .main-layout {
+    flex: 1;
+    min-height: auto;
+    padding: 18px 28px 12px;
+  }
+
+  .intro {
+    margin-bottom: 14px;
+  }
+
+  .intro h1 {
+    margin: 7px 0;
+    font-size: 40px;
+    line-height: 1.04;
+  }
+
+  .intro-copy {
+    max-width: 520px;
+    font-size: 12px;
+    line-height: 1.45;
+  }
+
+  .workspace {
+    min-height: 380px;
+  }
+
+  .control-panel {
+    padding: 16px 18px 13px;
+  }
+
+  .panel-heading {
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .coordinate-fieldset {
+    margin-bottom: 14px;
+  }
+
+  .input-wrap {
+    gap: 5px;
+    padding: 8px 10px 7px;
+  }
+
+  .helper-line {
+    margin-top: 6px;
+  }
+
+  .range-field {
+    gap: 7px;
+  }
+
+  .analyze-button {
+    height: 39px;
+    margin-top: 12px;
+  }
+
+  .panel-divider {
+    margin: 13px 0 10px;
+  }
+
+  .method-note p {
+    font-size: 9px;
+    line-height: 1.45;
+  }
+
+  .page-footer {
+    margin-top: 10px;
+  }
+
+  .empty-state {
+    padding: 20px;
+  }
+
+  .empty-visual {
+    height: 105px;
+    margin-bottom: 9px;
+  }
+}
+
+@media (min-width: 761px) and (max-height: 680px) {
+  .intro h1 {
+    font-size: 34px;
+  }
+
+  .workspace {
+    min-height: 330px;
+  }
+}
+
+/* Browser zoom reduces the available CSS height. Keep the desktop workspace
+   in view by tightening the intro and form before overflow is needed. */
+@media (min-width: 761px) and (max-height: 800px) {
+  .app-shell {
+    display: block;
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
+  }
+
+  .topbar { flex-basis: 50px; height: 50px; }
+  .main-layout { flex: none; padding: 16px 28px 12px; }
+  .intro { margin-bottom: 10px; }
+  .intro h1 { margin: 0 0 5px; font-size: 34px; line-height: 1; letter-spacing: -1.7px; }
+  .intro-copy { max-width: 490px; font-size: 11px; line-height: 1.35; }
+  .workspace { flex: none; min-height: clamp(350px, calc(100vh - 360px), 400px); }
+  .map-panel { min-height: inherit; }
+  .control-panel { justify-content: center; padding: 20px 16px; }
+  .panel-heading { gap: 9px; margin-bottom: 10px; }
+  .heading-icon { width: 30px; height: 30px; flex-basis: 30px; }
+  .panel-heading h2 { font-size: 13px; margin-bottom: 3px; }
+  .panel-heading p { font-size: 10px; }
+  .coordinate-fieldset { margin-bottom: 10px; }
+  .coordinate-fieldset legend { margin-bottom: 6px; }
+  .input-wrap { min-height: 46px; gap: 4px; padding: 7px 9px 6px; }
+  .input-wrap > span,
+  .field-label { font-size: 9px; }
+  .input-wrap input { font-size: 12px; }
+  .helper-line { margin-top: 5px; }
+  .range-field { gap: 5px; }
+  .select-wrap, .range-trigger { height: 36px; }
+  .analyze-button { height: 35px; margin-top: 9px; }
+  .panel-divider { margin: 9px 0 7px; }
+  .method-note p, .method-note strong { font-size: 9px; line-height: 1.35; }
+  .page-footer { margin-top: 7px; font-size: 8px; }
+  .empty-state { padding: 14px; }
+  .empty-visual { height: 85px; margin-bottom: 6px; }
+  .empty-state h2 { font-size: 16px; }
+  .empty-state > p { font-size: 10px; line-height: 1.4; margin: 6px 0 12px; }
+}
+
+@media (min-width: 761px) and (max-height: 780px) {
+  .app-shell { display: block; height: auto; min-height: 100vh; overflow: visible; }
+  .topbar { flex: 0 0 50px; }
+  .main-layout { display: flex; flex: none; flex-direction: column; min-height: auto; padding: 18px 28px 12px; }
+  .intro { flex: 0 0 auto; margin-bottom: 16px; }
+  .workspace {
+    flex: none;
+    grid-template-columns: 370px minmax(0, 1fr);
+    min-height: clamp(450px, calc(100vh - 240px), 510px);
+  }
+  .map-panel { min-height: inherit; }
+  .control-panel { justify-content: center; padding: 24px 22px; }
+  .panel-heading { gap: 11px; margin-bottom: 19px; }
+  .heading-icon { width: 26px; height: 30px; flex-basis: 26px; }
+  .panel-heading h2 { font-size: 16px; }
+  .panel-heading p { font-size: 13px; }
+  .coordinate-fieldset { margin-bottom: 17px; }
+  .coordinate-fieldset legend { font-size: 15px; margin-bottom: 8px; }
+  .coordinate-row { gap: 10px; }
+  .input-wrap { min-height: 52px; gap: 5px; padding: 8px 10px; }
+  .input-wrap > span, .field-label { font-size: 11px; }
+  .input-wrap input { font-size: 14px; }
+  .helper-line { font-size: 13px; margin-top: 7px; }
+  .range-field { gap: 8px; }
+  .select-wrap, .range-trigger { height: 44px; }
+  .analyze-button { height: 44px; font-size: 15px; margin-top: 15px; }
+  .panel-divider { margin: 18px 0 13px; }
+  .method-note p, .method-note strong { font-size: 11px; line-height: 1.45; }
+  .empty-state h2 { font-size: 20px; }
+  .empty-state > p { font-size: 12px; }
+  .map-legend span { font-size: 10px; }
+  .page-footer { margin-top: 12px; }
+}
+
+@media (min-width: 1000px) {
+  .form-actions {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 160px;
+    align-items: end;
+    gap: 10px;
+  }
+
+  .form-actions .range-field { grid-column: 1; grid-row: 1; }
+  .form-actions .analyze-button {
+    grid-column: 2;
+    grid-row: 1;
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+    padding: 0 10px;
+  }
+  .form-actions .error-message {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    margin: 0;
+  }
+}
