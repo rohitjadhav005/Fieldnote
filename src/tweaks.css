@@ -379,3 +379,98 @@ body {
     margin: 0;
   }
 }
+/* Brief branded intro shown during the initial app load. */
+.welcome-screen {
+  position: fixed;
+  z-index: 100;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: #edf2ee;
+  animation: welcome-screen-out .45s ease-in 1.05s forwards;
+}
+
+.welcome-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  animation: welcome-content-in .65s cubic-bezier(.2,.8,.2,1) both;
+}
+
+.welcome-mark {
+  width: 52px;
+  height: 52px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px;
+  padding: 11px;
+  border-radius: 15px;
+  background: #2d6a50;
+  box-shadow: 0 8px 20px rgba(31, 62, 45, .18);
+  transform: rotate(-5deg);
+  animation: welcome-mark-pop .75s cubic-bezier(.2,.8,.2,1) both, welcome-mark-breathe 1.2s ease-in-out .7s infinite;
+}
+
+.welcome-mark span {
+  border-radius: 3px;
+  background: #d6e6d8;
+  animation: welcome-tile-in .45s cubic-bezier(.2,.8,.2,1) both;
+}
+
+.welcome-mark span:nth-child(2) { animation-delay: .12s; opacity: .55; }
+.welcome-mark span:nth-child(3) { animation-delay: .2s; opacity: .55; }
+.welcome-mark span:nth-child(4) { animation-delay: .28s; }
+
+.welcome-name {
+  margin-top: 8px;
+  color: #243b31;
+  font: 700 21px 'DM Sans', sans-serif;
+  letter-spacing: -.7px;
+}
+
+.welcome-caption {
+  color: #718078;
+  font: 500 9px 'DM Sans', sans-serif;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+.is-welcoming > :not(.welcome-screen) {
+  animation: welcome-app-in .45s ease-out 1.12s both;
+}
+
+@keyframes welcome-screen-out {
+  to { opacity: 0; visibility: hidden; }
+}
+
+@keyframes welcome-content-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes welcome-mark-pop {
+  0% { opacity: 0; transform: scale(.55) rotate(-18deg); }
+  70% { opacity: 1; transform: scale(1.08) rotate(-2deg); }
+  100% { transform: scale(1) rotate(-5deg); }
+}
+
+@keyframes welcome-mark-breathe {
+  0%, 100% { box-shadow: 0 8px 20px rgba(31, 62, 45, .18), 0 0 0 0 rgba(45, 106, 80, 0); }
+  50% { box-shadow: 0 10px 24px rgba(31, 62, 45, .2), 0 0 0 8px rgba(45, 106, 80, .08); }
+}
+
+@keyframes welcome-tile-in {
+  from { opacity: 0; transform: scale(.35); }
+  to { transform: scale(1); }
+}
+
+@keyframes welcome-app-in {
+  from { opacity: .65; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .welcome-screen { animation-duration: .01ms; animation-delay: .35s; }
+  .welcome-content, .welcome-mark, .welcome-mark span, .is-welcoming > :not(.welcome-screen) { animation: none; }
+}

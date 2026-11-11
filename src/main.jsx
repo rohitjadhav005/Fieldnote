@@ -55,6 +55,7 @@ function MapIllustration({ range }) {
 }
 
 function App() {
+  const [showWelcome, setShowWelcome] = useState(true);
   const [latitude, setLatitude] = useState('');
   const [longitude, setLongitude] = useState('');
   const [range, setRange] = useState('10');
@@ -64,6 +65,11 @@ function App() {
   const [assessment, setAssessment] = useState(null);
   const [runId, setRunId] = useState(1);
   const rangePickerRef = useRef(null);
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => setShowWelcome(false), 1350);
+    return () => window.clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     if (!rangeOpen) return undefined;
@@ -108,7 +114,13 @@ function App() {
     setStatus('idle'); setLatitude(''); setLongitude(''); setError(''); setAssessment(null); setRunId((id) => id + 1);
   }
 
-  return <div className="app-shell">
+  return <div className={`app-shell${showWelcome ? ' is-welcoming' : ''}`}>
+    {showWelcome && <div className="welcome-screen" aria-label="Welcome to Fieldnote" role="status">
+      <div className="welcome-content">
+        <div className="welcome-mark" aria-hidden="true"><span/><span/><span/><span/></div>
+        <span className="welcome-name">Fieldnote</span>
+      </div>
+    </div>}
     <header className="topbar">
       <a className="brand" href="#top" aria-label="Fieldnote Home"><span className="brand-mark"><span/><span/><span/><span/></span><span>fieldnote</span></a>
       <div className="topbar-right"><span className="workspace-label">Research workspace</span><span className="avatar">R</span></div>
